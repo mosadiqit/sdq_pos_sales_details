@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <report
+        id="pos_report"
+        string="Print Document"
+        model="daily_purchase_product"
+        report_type="qweb-pdf"
+        name="sdq_pos_sales_details.pos_report_template"
+        />
+    </data>
+</odoo>

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sdq_pos_sales_details_sdq_pos_sales_details,sdq_pos_sales_details.sdq_pos_sales_details,model_sdq_pos_sales_details_sdq_pos_sales_details,,1,0,0,0

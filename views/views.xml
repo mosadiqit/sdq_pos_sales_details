@@ -1,0 +1,361 @@
+<odoo>
+    <!--    <?xml version="1.0" encoding="utf-8"?>-->
+
+
+    <!--tree view of the project model-->
+
+    <record id="daily_purchase_product_tree" model="ir.ui.view">
+        <field name="name">daily_purchase_product</field>
+        <field name="model">daily_purchase_product</field>
+        <field name="arch" type="xml">
+            <tree string="الحساب اليومي">
+                <field name="company_id"/>
+                <!--                <field name="pos_details"/>-->
+                <field name="date"/>
+                <field name="capital"/>
+<!--                <field name="globaltotal_purchase"/>-->
+                <!--                <field name="total_daily_purchase_product"/>-->
+                <!--                <field name="globaltotal_purchase"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <!--form view of the patient model-->
+    <record id="project_form" model="ir.ui.view">
+        <field name="name">daily_purchase_product_form</field>
+        <field name="model">daily_purchase_product</field>
+        <field name="arch" type="xml">
+            <form string="Project">
+
+                <!--                <header>-->
+                <!--                    <field name="state" widget="statusbar" options="{'clickable': '1'}"/>-->
+                <!--                </header>-->
+                <sheet>
+                    <div class="oe_title">
+                        <separator string="تفاصيل البيع "/>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="company_id"/>
+
+                            <field name="date"/>
+                            <!--                            <label for="capital"/>-->
+                            <!--                            <div>-->
+                            <!--                                <h1>-->
+                            <!--                                    <field name="capital"/>-->
+                            <!--                                </h1>-->
+                            <!--                            </div>-->
+                        </group>
+                        <group>
+                            <field name="globaltotal_purchase"/>
+                            <field name="outcome_amount"/>
+                            <field name="rest"/>
+                            <field name="total_daily_depenses"/>
+                        </group>
+                        <group>
+                            <field name="document"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                    <separator string="الدخول"/>
+                    <notebook>
+                        <page name="info" string="Produits">
+                            <field name="purchase_lines" nolabel="1">
+                                <tree editable="top">
+                                    <field name="product_id"/>
+                                    <field name="qty"/>
+                                    <!--                                    <field name="uom_id"/>-->
+                                    <field name="price_unit"/>
+                                    <!--                                    <field name="tax_id"/>-->
+                                    <field name="price_total"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right">
+                                <field name="capital" widget="monetary"
+                                       options="{'currency_field': 'currency_id'}"/>
+
+                                <field name="total_daily_purchase_product" widget="monetary"
+                                       options="{'currency_field': 'currency_id'}"/>
+                                <label for="globaltotal_purchase"/>
+                                <h1>
+                                    <field name="globaltotal_purchase" widget="monetary"
+                                           options="{'currency_field': 'currency_id'}"/>
+                                </h1>
+                            </group>
+                        </page>
+                    </notebook>
+                    <group>
+                        <separator string="المبيعات"/>
+                    </group>
+                    <notebook>
+                        <page name="info" string="المبيعات">
+                            <field name="sales_lines" nolabel="1">
+                                <tree editable="top">
+                                    <field name="product_id"/>
+                                    <field name="qty"/>
+                                    <!--                                    <field name="uom_id"/>-->
+                                    <field name="price_unit"/>
+                                    <!--                                    <field name="tax_id"/>-->
+                                    <field name="price_total"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right">
+                                <label for="total_daily_sales_product"/>
+                                <h1>
+                                    <field name="total_daily_sales_product" widget="monetary"
+                                           options="{'currency_field': 'currency_id'}"/>
+                                </h1>
+                                <label for="total_daily_depenses"/>
+                                <h1>
+                                    <field name="total_daily_depenses" widget="monetary"
+                                           options="{'currency_field': 'currency_id'}"/>
+                                </h1>
+
+                            </group>
+                        </page>
+                        <page name="info" string="المصاريف">
+                            <field name="depenses_lines" nolabel="1">
+                                <tree editable="top">
+                                    <field name="product_id"/>
+                                    <field name="qty"/>
+                                    <!--                                    <field name="uom_id"/>-->
+                                    <field name="price_unit"/>
+                                    <!--                                    <field name="tax_id"/>-->
+                                    <field name="price_total"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right">
+                                <label for="total_daily_depenses"/>
+                                <h1>
+                                    <field name="total_daily_depenses" widget="monetary"
+                                           options="{'currency_field': 'currency_id'}"/>
+                                </h1>
+
+                            </group>
+                        </page>
+<!--                    </notebook>-->
+                        <!--                    <group>-->
+                        <!--                        <separator string="المصاريف"/>-->
+                        <!--                    </group>-->
+                        <!--                    <notebook>-->
+
+                    </notebook>
+                    <group>
+                        <separator string="الحساب النهائي"/>
+                    </group>
+                    <notebook>
+                        <page name="info" string="الحساب النهائي">
+                            <field name="amount_lines" nolabel="1">
+                                <tree editable="top">
+                                    <field name="product_id"/>
+                                    <field name="qty"/>
+                                    <!--                                    <field name="uom_id"/>-->
+                                    <field name="price_unit"/>
+                                    <!--                                    <field name="tax_id"/>-->
+                                    <field name="price_total"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right">
+                                <label for="total_daily_amount"/>
+                                <h1>
+                                    <field name="total_daily_amount" widget="monetary"
+                                           options="{'currency_field': 'currency_id'}"/>
+                                </h1>
+
+                            </group>
+                        </page>
+                    </notebook>
+                    <!--                    <notebook>-->
+                    <!--                        <page name="info" string="Materiels">-->
+                    <!--                            <field name="tools_lines" nolabel="1">-->
+                    <!--                                <tree editable="top">-->
+                    <!--                                </tree>-->
+                    <!--                            </field>-->
+                    <!--                            <group class="oe_subtotal_footer oe_right">-->
+                    <!--                                <field name="total_material_costs" widget="monetary"-->
+                    <!--                                       options="{'currency_field': 'currency_id'}"/>-->
+                    <!--                            </group>-->
+                    <!--                        </page>-->
+                    <!--                    </notebook>-->
+                    <!--                    <separator string="Services projet"/>-->
+                    <!--                    <notebook>-->
+                    <!--                        <page name="info" string="Services">-->
+                    <!--                            <field name="service_lines" nolabel="1">-->
+                    <!--                                <tree editable="top">-->
+                    <!--                                    <field name="product_id"/>-->
+                    <!--                                    <field name="qty"/>-->
+                    <!--                                    <field name="uom_id"/>-->
+                    <!--                                    <field name="price_unit"/>-->
+                    <!--                                    <field name="tax_id"/>-->
+                    <!--                                    <field name="price_total"/>-->
+                    <!--                                </tree>-->
+                    <!--                            </field>-->
+                    <!--                            <group class="oe_subtotal_footer oe_right">-->
+                    <!--                                <field name="total_service_costs" widget="monetary"-->
+                    <!--                                       options="{'currency_field': 'currency_id'}"/>-->
+                    <!--                            </group>-->
+                    <!--                        </page>-->
+                    <!--                    </notebook>-->
+                    <!--                    <separator string="Location des véhicules"/>-->
+                    <!--                    <notebook>-->
+                    <!--                        <page name="info" string="Location">-->
+                    <!--                            &lt;!&ndash;                                                                <field name="vehicle_id"/>&ndash;&gt;-->
+                    <!--                            <field name="order_line" nolabel="1">-->
+                    <!--                                <tree editable="top">-->
+                    <!--                                    <field name="partner_id"/>-->
+                    <!--                                    <field name="product_id"/>-->
+                    <!--                                    <field name="product_qty"/>-->
+                    <!--                                    <field name="product_uom"/>-->
+                    <!--                                    <field name="price_unit"/>-->
+                    <!--                                    <field name="price_tax"/>-->
+                    <!--                                    <field name="price_subtotal"/>-->
+                    <!--                                    <field name="price_total"/>-->
+                    <!--                                </tree>-->
+                    <!--                            </field>-->
+                    <!--                            <group class="oe_subtotal_footer oe_right">-->
+                    <!--                                <field name="total_service_costs" widget="monetary"-->
+                    <!--                                       options="{'currency_field': 'currency_id'}"/>-->
+                    <!--                            </group>-->
+                    <!--                        </page>-->
+                    <!--                    </notebook>-->
+                    <!--                    <separator string="Artisans"/>-->
+                    <!--                    <notebook>-->
+                    <!--                        <page name="info" string="Location">-->
+                    <!--                            <field name="service_lines" nolabel="1">-->
+                    <!--                                <tree editable="top">-->
+
+                    <!--                                    <field name="product_id"/>-->
+                    <!--                                    &lt;!&ndash;                                    <field name="name"/>&ndash;&gt;-->
+                    <!--                                    <field name="qty"/>-->
+                    <!--                                    <field name="uom_id"/>-->
+                    <!--                                    <field name="price_unit"/>-->
+                    <!--                                    <field name="tax_id"/>-->
+                    <!--                                    &lt;!&ndash;                                    <field name="price_subtotal"/>&ndash;&gt;-->
+                    <!--                                    <field name="price_total"/>-->
+                    <!--                                </tree>-->
+                    <!--                            </field>-->
+                    <!--                            <group class="oe_subtotal_footer oe_right">-->
+                    <!--                                <field name="total_renting_costs" widget="monetary"-->
+                    <!--                                       options="{'currency_field': 'currency_id'}"/>-->
+                    <!--                            </group>-->
+                    <!--                        </page>-->
+                    <!--                    </notebook>-->
+
+                    <!--                    <separator string="Main d'Oeuvre"/>-->
+                    <!--                    <notebook>-->
+                    <!--                        <page name="info" string="Main d'Oeuvre">-->
+                    <!--                            <field name="tools_lines" nolabel="1">-->
+                    <!--                                <tree editable="top">-->
+                    <!--                                    <field name="product_id"/>-->
+                    <!--                                    &lt;!&ndash;                                    <field name="name"/>&ndash;&gt;-->
+                    <!--                                    <field name="qty"/>-->
+                    <!--                                    <field name="uom_id"/>-->
+                    <!--                                    <field name="price_unit"/>-->
+                    <!--                                    <field name="tax_id"/>-->
+                    <!--                                    <field name="price_subtotal"/>-->
+                    <!--                                    <field name="price_total"/>-->
+                    <!--                                </tree>-->
+                    <!--                            </field>-->
+                    <!--                            <group class="oe_subtotal_footer oe_right">-->
+                    <!--                                <field name="total_labour_costs" widget="monetary"-->
+                    <!--                                       options="{'currency_field': 'currency_id'}"/>-->
+                    <!--                            </group>-->
+                    <!--                        </page>-->
+                    <!--                    </notebook>-->
+                    <!--                    <separator string="Autre Charges"/>-->
+                    <!--                    <notebook>-->
+                    <!--                        <page name="info" string="Overheads">-->
+                    <!--                            <field name="overhead_lines" nolabel="1">-->
+                    <!--                                <tree editable="top">-->
+                    <!--                                    <field name="product_id"/>-->
+                    <!--                                    <field name="name"/>-->
+                    <!--                                    <field name="qty"/>-->
+                    <!--                                    <field name="uom_id"/>-->
+                    <!--                                    <field name="price_unit"/>-->
+                    <!--                                    <field name="tax_id"/>-->
+                    <!--                                    &lt;!&ndash;                                    <field name="price_subtotal"/>&ndash;&gt;-->
+                    <!--                                    <field name="price_total"/>-->
+                    <!--                                </tree>-->
+                    <!--                            </field>-->
+                    <!--                            <group class="oe_subtotal_footer oe_right">-->
+                    <!--                                <field name="total_overhead_costs" widget="monetary"-->
+                    <!--                                       options="{'currency_field': 'currency_id'}"/>-->
+                    <!--                            </group>-->
+                    <!--                        </page>-->
+                    <!--                    </notebook>-->
+                    <!--                    <separator string="Facturation"/>-->
+                    <!--                    <notebook>-->
+                    <!--                        <page name="info" string="Overheads">-->
+                    <!--                            <field name="overhead_lines" nolabel="1">-->
+                    <!--                                <tree editable="top">-->
+                    <!--                                    <field name="product_id"/>-->
+                    <!--                                    <field name="name"/>-->
+                    <!--                                    <field name="qty"/>-->
+                    <!--                                    <field name="uom_id"/>-->
+                    <!--                                    <field name="price_unit"/>-->
+                    <!--                                    <field name="tax_id"/>-->
+                    <!--                                    &lt;!&ndash;                                    <field name="price_subtotal"/>&ndash;&gt;-->
+                    <!--                                    <field name="price_total"/>-->
+                    <!--                                </tree>-->
+                    <!--                            </field>-->
+                    <!--                            <group class="oe_subtotal_footer oe_right">-->
+                    <!--                                <field name="total_overhead_costs" widget="monetary"-->
+                    <!--                                       options="{'currency_field': 'currency_id'}"/>-->
+                    <!--                            </group>-->
+                    <!--                        </page>-->
+                    <!--                    </notebook>-->
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+
+        </field>
+    </record>
+
+
+    <!--action to open the project Template-->
+    <record id="daily_purchase_product_action" model="ir.actions.act_window">
+        <field name="name">Details des ventes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">daily_purchase_product</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,kanban,graph,pivot</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Félicitations !
+            </p>
+        </field>
+    </record>
+    <!--    <record id="project_material_action" model="ir.actions.act_window">-->
+    <!--        <field name="name">Material</field>-->
+    <!--        <field name="type">ir.actions.act_window</field>-->
+    <!--        <field name="res_model">tools.costs</field>-->
+    <!--        <field name="view_type">form</field>-->
+    <!--        <field name="view_mode">tree,form,kanban</field>-->
+    <!--        <field name="domain">[]</field>-->
+    <!--        <field name="help" type="html">-->
+    <!--            <p class="o_view_nocontent_smiling_face">-->
+    <!--                Félicitations,Creér votre 1ére Projet !-->
+    <!--            </p>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+
+    <!-- menu categories -->
+    <menuitem name="Détails des Ventes" id="daily_purchase_product_menu_1" sequence="1"/>
+    <menuitem name="Détails des Ventes" id="daily_purchase_product_menu_11" sequence="2" action="daily_purchase_product_action"
+              parent="daily_purchase_product_menu_1"/>
+    <menuitem name="Articles" id="daily_purchase_product_menu_22" sequence="3" action="point_of_sale.product_template_action_pos_product"
+              parent="daily_purchase_product_menu_1"/>
+
+    <!--    <menuitem name="Articles" id="sdq_project_costs.menu_2" sequence="3" parent="sdq_project_costs.menu_1"-->
+    <!--              action="stock.product_template_action_product"/>-->
+    <!--    <menuitem name="Location" id="sdq_project_rent_menu_3" parent="sdq_project_costs.menu_1"-->
+    <!--              action="renting_order_action"/>-->
+
+
+</odoo>
